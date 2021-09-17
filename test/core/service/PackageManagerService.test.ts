@@ -29,13 +29,7 @@ describe('test/core/service/PackageManagerService.test.ts', () => {
 
   describe('create package', () => {
     it('should work', async () => {
-      await packageManagerService.publish({
-        dist: Buffer.alloc(0),
-        distTag: '',
-        name: 'foo',
-        packageJson: {},
-        version: '1.0.0',
-      });
+      await packageManagerService.publish({} as any);
       const pkgVersion = await packageRepository.findPackageVersion(null, 'foo', '1.0.0');
       assert(pkgVersion);
       assert(pkgVersion.version === '1.0.0');
